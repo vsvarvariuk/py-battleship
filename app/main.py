@@ -43,7 +43,7 @@ class Battleship:
                 a, b = i
                 print(b[1] - a[1])
                 if a[0] == b[0] and b[1] - a[1] == 1:
-                    return "Hit"
+                    return "Hit!"
                 if (self.matrix[a[0]][a[1]] == "*"
                         and self.matrix[b[0]][b[1]] == "*"):
                     return "Sunk!"
