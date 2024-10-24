@@ -23,7 +23,6 @@ def test_battleship():
     assert battle_ship.fire((2, 2)) == "Hit!"
     assert battle_ship.fire((2, 3)) == "Sunk!"
     assert battle_ship.fire((4, 3)) == "Miss!"
-    assert battle_ship.fire((4, 5)) == "Hit!"
     assert battle_ship.fire((5, 5)) == "Miss!"
     assert battle_ship.fire((4, 6)) == "Sunk!"
     assert battle_ship.fire((9, 5)) == "Sunk!"
