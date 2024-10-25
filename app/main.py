@@ -34,16 +34,27 @@ class Battleship:
     def __init__(self, ships: list) -> None:
         self.ship = ships
         self.matrix = Ship(ships).get_deck()
+        self.dict = self.ship_hit()
 
     def fire(self, kord: tuple) -> str:
         x, y = kord
         if self.matrix[x][y] == u"\u25A1":
             self.matrix[x][y] = "*"
-            for i in self.ship:
-                a, b = i
-                if (self.matrix[a[0]][a[1]] == "*"
-                        and self.matrix[b[0]][b[1]] == "*"):
-                    return "Sunk!"
-            return "Hit!"
-        elif self.matrix[x][y] != u"\u25A1":
+            for i in self.dict:
+                if kord in self.dict[i]:
+                    self.dict[i].remove(kord)
+                    if self.dict[i] == []:
+                        return "Sunk!"
+                    return "Hit!"
+        else:
             return "Miss!"
+
+    def ship_hit(self) -> dict:
+        res = {}
+        for i in self.ship:
+            sl = []
+            if i[0][0] == i[1][0]:
+                for j in range(i[0][1], i[1][1] + 1):
+                    sl.append((i[0][0], j))
+            res[i] = sl
+        return res
