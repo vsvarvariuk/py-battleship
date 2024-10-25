@@ -54,7 +54,7 @@ class Battleship:
         for i in self.ship:
             sl = []
             if i[0][0] == i[1][0]:
-                for j in range(i[0][1], i[1][1] + 1):
-                    sl.append((i[0][0], j))
+                for elem in range(i[0][1], i[1][1] + 1):
+                    sl.append((i[0][0], elem))
             res[i] = sl
         return res
